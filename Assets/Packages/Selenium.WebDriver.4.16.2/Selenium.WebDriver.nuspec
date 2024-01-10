@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Selenium.WebDriver</id>
+    <version>4.16.2</version>
+    <title>Selenium WebDriver</title>
+    <authors>Selenium Committers</authors>
+    <owners>selenium</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <icon>icon.png</icon>
+    <readme>README.md</readme>
+    <projectUrl>https://selenium.dev/</projectUrl>
+    <iconUrl>https://selenium.dev/images/selenium_logo_square_green.png</iconUrl>
+    <description>Selenium is a set of different software tools each with a different approach to supporting browser automation. These tools are highly flexible, allowing many options for locating and manipulating elements within a browser, and one of its key features is the support for automating multiple browser platforms. This package contains the .NET bindings for the concise and object-based Selenium WebDriver API, which uses native OS-level events to manipulate the browser, bypassing the JavaScript sandbox, and does not require the Selenium Server to automate the browser.</description>
+    <summary>.NET bindings for the Selenium WebDriver API</summary>
+    <releaseNotes>See the latest changes, included in this release, at https://github.com/SeleniumHQ/selenium/blob/trunk/dotnet/CHANGELOG.</releaseNotes>
+    <copyright>Copyright © 2023 Software Freedom Conservancy</copyright>
+    <tags>selenium webdriver browser automation</tags>
+    <repository type="GitHub" url="https://github.com/SeleniumHQ/selenium" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.0">
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System.Drawing" targetFramework="" />
+    </frameworkAssemblies>
+  </metadata>
+</package>

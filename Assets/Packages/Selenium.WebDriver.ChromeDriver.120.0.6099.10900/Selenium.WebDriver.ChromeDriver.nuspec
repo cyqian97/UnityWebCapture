@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Selenium.WebDriver.ChromeDriver</id>
+    <version>120.0.6099.10900</version>
+    <title>Selenium.WebDriver.ChromeDriver (Win32, macOS, macOS arm64, and Linux64)</title>
+    <authors>jsakamoto</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">Unlicense</license>
+    <licenseUrl>https://licenses.nuget.org/Unlicense</licenseUrl>
+    <icon>nupkg-icon.png</icon>
+    <projectUrl>https://github.com/jsakamoto/nupkg-selenium-webdriver-chromedriver/</projectUrl>
+    <description>Install Chrome Driver (Win32, macOS, macOS arm64, and Linux64) for Selenium WebDriver into your Unit Test Project.
+      "chromedriver(.exe)" is copied to the bin folder from the package folder when the build process.
+      NuGet package restoring ready, and no need to commit "chromedriver(.exe)" binary into source code control repository.
+      / The MSBuild script that contained this package is free and unencumbered software released into the public domain.
+      / "chromedriver(.exe)" is licensed under the New BSD License.</description>
+    <summary>Selenium Google Chrome Driver (Win32, macOS, macOS arm64, and Linux64) (does not make your source repository too fat.)</summary>
+    <releaseNotes>120.0.6099.10900
+      - Chrome Driver 120.0.6099.109 release
+
+      To see all the change logs, please visit the following URL.
+      - https://github.com/jsakamoto/nupkg-selenium-webdriver-chromedriver/blob/master/RELEASE-NOTES.txt</releaseNotes>
+    <language>en-US</language>
+    <tags>Selenium WebDriver chromedriver</tags>
+    <readme>README.md</readme>
+    <repository type="git" url="https://github.com/jsakamoto/nupkg-selenium-webdriver-chromedriver" />
+  </metadata>
+</package>
