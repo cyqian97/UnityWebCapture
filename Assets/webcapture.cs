@@ -5,76 +5,75 @@ using UnityEngine;
 using System;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using System.Reflection;
+using System.Reflection.Emit;
 
-public class webcapture : MonoBehaviour
+public class WebCapture : MonoBehaviour
 {
     static IWebDriver driver;
     bool is_captured = false;
-    public Button yourButton;
-
+    public RawImage rawImage;
+    int img_count = 0;
+    Screenshot TakeScreenshot;
 
     void TaskOnClick()
     {
-        try
-        {
-            Debug.Log("capture started...");
-            Screenshot TakeScreenshot = ((ITakesScreenshot)driver).GetScreenshot();
-            string imagePath = "./selenium-screenshot-2.png";
-            TakeScreenshot.SaveAsFile(imagePath);
-            Debug.Log("capture finished...");
-        }
-        catch (Exception e)
-        {
-            Debug.Log("capture failed...");
-        }
+        string imagePath = img_count.ToString() + "_web.png";
+        TakeScreenshot.SaveAsFile(imagePath);
+        Debug.Log("Image saved: " + imagePath);
+        img_count++;
+
     }
 
     public void seleniumScreenShot()
     {
-
-        Debug.Log("in function...");
         driver = new ChromeDriver();
 
-        Debug.Log("driver created...");
         var weburl = "https://www.oculus.com/casting";
         driver.Navigate().GoToUrl(weburl);
-        try
+    }
+
+    // Convert a byte array to a Texture2D
+    private Texture2D ByteArrayToTexture2D(byte[] byteArray)
+    {
+        Texture2D texture = new Texture2D(2, 2); // Create a new Texture2D
+        bool isLoaded = texture.LoadImage(byteArray); // Load the byte array into the texture
+
+        if (!isLoaded)
         {
-            Debug.Log("capture started...");
-            Screenshot TakeScreenshot = ((ITakesScreenshot)driver).GetScreenshot();
-            string imagePath = "./selenium-screenshot.png";
-            TakeScreenshot.SaveAsFile(imagePath);
-            Debug.Log("capture finished...");
+            Debug.LogError("Failed to load texture from byte array.");
+            return null;
         }
-        catch (Exception e)
-        {
-            Debug.Log("capture failed...");
-        }
+
+        return texture;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-            Button btn = yourButton.GetComponent<Button>();
-            btn.onClick.AddListener(TaskOnClick);
-            Debug.Log("starting...");
+        seleniumScreenShot();
     }
 
     // Update is called once per frame
     void Update()
     {
+        try
+        {
+            TakeScreenshot = ((ITakesScreenshot)driver).GetScreenshot();
+        }
+        catch (Exception e)
+        {
+            Debug.Log("capture failed..." + e.Message);
+        }
+        byte[] bytes = TakeScreenshot.AsByteArray;
+        Texture2D texture = ByteArrayToTexture2D(bytes);
+        rawImage.texture = texture;
 
         // Taking screenshots with Selenium
-        if (!is_captured)
+        if (Input.GetMouseButtonDown(0))
         {
-            is_captured = true;
-
-            Debug.Log("before function...");
-            seleniumScreenShot();
-            Debug.Log("is captured: "+is_captured);
+            TaskOnClick();
         }
-        //end
-
     }
 
     void OnDestroy()
